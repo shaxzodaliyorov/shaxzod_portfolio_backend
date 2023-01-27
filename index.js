@@ -10,7 +10,7 @@ env.config();
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('shaxzod')
+  res.send('shaxzod aliyorov')
 })
 
 // app use
