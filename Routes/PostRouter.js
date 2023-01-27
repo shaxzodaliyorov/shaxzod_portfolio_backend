@@ -17,14 +17,13 @@ const upload = multer({
     storage: imgConfig,
 });
 
-router.post('/add/:id', upload.single('img'), async (req, res) => {
+router.post('/add/:id', async (req, res) => {
     const userid = req.params.id
-    const { title, auth, link } = req.body
-    const { filename } = req.file
+    const { title, auth, link, img } = req.body
     try {
         const admin = await userModel.findById(userid)
         if (admin.isadmin) {
-            const onePost = await postsModel.create({ title, auth, link, img: filename })
+            const onePost = await postsModel.create({ title, auth, link, img })
             res.status(200).json(onePost)
         } else {
             return res.status(403).json({ ms: 'error' })

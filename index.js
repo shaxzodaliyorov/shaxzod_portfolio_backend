@@ -25,7 +25,8 @@ app.use('/api/user', require('./Routes/UserRouter'))
 app.use('/api/comments', require('./Routes/CommentsRouter'))
 app.use('/api/posts', require('./Routes/PostRouter'))
 // url database
-const URL = process.env.DATA_BASE_URL || null;
+// process.env.DATA_BASE_URL
+const URL = 'mongodb://localhost:27017/media-app';
 // mongo db connect
 mongoose
   .connect(URL)
