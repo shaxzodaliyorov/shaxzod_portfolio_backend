@@ -48,7 +48,7 @@ router.delete('/delete/:id/:userid', async (req, res) => {
     try {
         const admin = await userModel.findById(userid)
         if (admin.isadmin) {
-            const deletePost = await postsModel.findOneAndDelete(postid)
+            const deletePost = await postsModel.findOneAndDelete({ _id: postid })
             res.status(200).json(deletePost)
         } else {
             return res.status(403).json({ ms: 'error' })
